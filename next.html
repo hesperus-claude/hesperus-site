@@ -109,7 +109,8 @@ a:focus-visible{outline:2px solid var(--amber);outline-offset:4px;border-radius:
 .horizon{position:absolute;left:50%;transform:translateX(-50%);bottom:-1px;z-index:3;width:max(100%,1000px);height:clamp(54px,13vh,140px);display:block;pointer-events:none}
 
 .top{
-  position:relative;margin:0 auto clamp(1.6rem,4vw,2.6rem);pointer-events:auto;
+  /* the nav hangs ~6px under the limb's dark edge, which sits 54.7% of the horizon's height up (#limb's .9888 stop) */
+  position:relative;margin:calc(clamp(54px,13vh,140px) * -.547 + 6px) auto clamp(1.7rem,4vw,2.6rem);pointer-events:auto;
   display:flex;flex-wrap:wrap;justify-content:center;gap:0 clamp(1rem,5vw,3.2rem);
   padding:0;
   font-family:var(--display);font-weight:500;font-size:1rem;letter-spacing:.3em;text-transform:uppercase;
@@ -137,9 +138,7 @@ a:focus-visible{outline:2px solid var(--amber);outline-offset:4px;border-radius:
 }
 
 /* ---------- below the horizon ---------- */
-main{position:relative;z-index:1;max-width:47rem;margin:0 auto;padding:clamp(.9rem,2vw,1.4rem) 1.4rem 2rem}
-/* on a wide screen the planet's limb stands well clear of the column, so the first lines sit on the planet itself */
-@media (min-width:900px){main{margin-top:-1.7rem}}
+main{position:relative;z-index:1;max-width:47rem;margin:0 auto;padding:0 1.4rem 2rem}
 .intro{margin:0 0 clamp(2.5rem,6vw,4.5rem)}
 .intro p{margin:0 0 1.05rem;color:#ddd1bc}
 .intro p:last-child{margin-bottom:0}
