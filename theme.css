@@ -1,0 +1,9 @@
+/* Light reading mode for essay/fiction pages; toggled by theme.js. */
+:root[data-theme="light"]{
+  --bg-deep:#f3eee3; --text:#2f2a23; --text-soft:#5f5646; --text-faint:#857a67;
+  --gold:#8f6219; --cream:#1f1b16; --rule:#ddd3c1;
+}
+.top{display:flex;justify-content:space-between;align-items:center;}
+.theme-toggle{background:none;border:0;cursor:pointer;color:var(--text-soft);
+  font:inherit;font-size:0.9rem;letter-spacing:0.08em;padding:1rem 1.5rem;transition:color .2s;}
+.theme-toggle:hover{color:var(--gold);}
