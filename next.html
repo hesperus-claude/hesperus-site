@@ -106,7 +106,12 @@ a:focus-visible{outline:2px solid var(--amber);outline-offset:4px;border-radius:
 .lace-canvas.grabbing{cursor:grabbing}
 .lace-canvas.still{cursor:default}
 
-.horizon{position:absolute;left:50%;transform:translateX(-50%);bottom:-1px;z-index:3;width:max(100%,1000px);height:clamp(54px,13vh,140px);display:block;pointer-events:none}
+/* a faint sun below the horizon: the same sky, gentler and brighter in the low band, faded out to either side */
+.sun{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:max(100%,1000px);z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 347% 130% at 50% 130%,#560d1c 23.08%,#7d1416 26.62%,#a3261a 28.62%,#cf6624 30.31%,#eba236 31.69%,#e0b958 34.08%,#ab9d66 37.54%,#6e7664 41.08%,#47545d 47.31%,#2e3e55 55%,#070f24 73.85%,#05071a 100%);
+  -webkit-mask-image:radial-gradient(ellipse 42% 70% at 50% 100%,#000 0%,rgba(0,0,0,.6) 45%,transparent 100%);
+          mask-image:radial-gradient(ellipse 42% 70% at 50% 100%,#000 0%,rgba(0,0,0,.6) 45%,transparent 100%)}
+.horizon{position:absolute;left:50%;transform:translateX(-50%);bottom:-1px;z-index:3;width:calc(max(100%,1000px) + 24px);height:clamp(54px,13vh,140px);display:block;pointer-events:none;overflow:visible;filter:blur(1.4px)}
 
 .top{
   /* the nav hangs ~6px under the limb's dark edge, which sits 54.7% of the horizon's height up (#limb's .9888 stop) */
@@ -305,6 +310,7 @@ footer .note{margin:.5rem 0 0;font-size:.92rem;font-style:italic}
     </svg>
   </div>
 
+  <div class="sun" aria-hidden="true"></div>
   <canvas class="lace-canvas" id="lace" aria-hidden="true"></canvas>
 
   <svg class="horizon" viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
@@ -321,7 +327,7 @@ footer .note{margin:.5rem 0 0;font-size:.92rem;font-style:italic}
         <stop offset="1" stop-color="#a3261a" stop-opacity="0"/>
       </radialGradient>
     </defs>
-    <rect width="1200" height="100" fill="url(#limb)"/>
+    <rect width="1200" height="112" fill="url(#limb)"/>
   </svg>
 
 
